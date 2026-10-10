@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sản phẩm | SHOEPURPLE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <header
+      class="sticky top-0 z-50 border-b border-gray-100 bg-white/90 shadow-sm backdrop-blur-md"
+    >
+      <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
+        <a
+          href="index.html"
+          class="flex items-center gap-2 text-xl font-black tracking-wider text-indigo-600 sm:text-2xl"
+        >
+          <i class="fa-solid fa-shoe-prints"></i> SHOEPURPLE
+        </a>
+        <nav class="hidden items-center gap-7 text-sm font-medium md:flex">
+          <a href="index.html" class="transition hover:text-indigo-600">Trang chủ</a>
+          <a href="products.html" class="font-semibold text-indigo-600">Sản phẩm</a>
+          <a href="index.html#flashsale" class="transition hover:text-indigo-600">Flash Sale</a>
+          <a href="thanhtoan.html" class="transition hover:text-indigo-600">Thanh toán</a>
+        </nav>
+        <a
+          href="thanhtoan.html"
+          class="relative rounded-full bg-indigo-50 p-3 text-indigo-600 transition hover:bg-indigo-100"
+          aria-label="Đi đến giỏ hàng và thanh toán"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span
+            id="cartCount"
+            class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white"
+            >0</span
+          >
+        </a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10 sm:py-14">
+      <section
+        class="mb-10 overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-950 via-indigo-800 to-purple-800 px-6 py-10 text-white sm:px-10 sm:py-14"
+      >
+        <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-indigo-200">
+          Bộ sưu tập SHOEPURPLE
+        </p>
+        <h1 class="text-3xl font-black tracking-tight sm:text-5xl">Tìm đôi giày dành cho bạn</h1>
+        <p class="mt-4 max-w-2xl text-sm text-indigo-100 sm:text-base">
+          Khám phá những mẫu giày mới nhất, bán chạy và ưu đãi đang có tại cửa hàng.
+        </p>
+      </section>
+
+      <section aria-label="Danh sách sản phẩm">
+        <div class="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-gray-900 sm:text-3xl">Tất cả sản phẩm</h2>
+            <p id="resultCount" class="mt-1 text-sm text-gray-500"></p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <label class="relative block">
+              <span class="sr-only">Tìm kiếm sản phẩm</span>
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+              ></i>
+              <input
+                id="productSearch"
+                type="search"
+                placeholder="Tìm tên sản phẩm..."
+                class="w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm outline-none transition focus:border-indigo-500 sm:w-64"
+              />
+            </label>
+            <label>
+              <span class="sr-only">Sắp xếp sản phẩm</span>
+              <select
+                id="sortProducts"
+                class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-indigo-500 sm:w-auto"
+              >
+                <option value="featured">Thứ tự nổi bật</option>
+                <option value="price-asc">Giá: thấp đến cao</option>
+                <option value="price-desc">Giá: cao đến thấp</option>
+                <option value="name">Tên: A đến Z</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div id="categoryFilters" class="mb-8 flex flex-wrap gap-2">
+          <button
+            type="button"
+            data-category="all"
+            class="category-filter rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow"
+          >
+            Tất cả
+          </button>
+          <button
+            type="button"
+            data-category="moi"
+            class="category-filter rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:text-indigo-600"
+          >
+            Mới nhất
+          </button>
+          <button
+            type="button"
+            data-category="hot"
+            class="category-filter rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:text-indigo-600"
+          >
+            Sản phẩm hot
+          </button>
+          <button
+            type="button"
+            data-category="khuyen-mai"
+            class="category-filter rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:text-indigo-600"
+          >
+            Khuyến mãi
+          </button>
+        </div>
+
+        <div
+          id="productGrid"
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        ></div>
+        <p
+          id="emptyMessage"
+          class="hidden rounded-2xl bg-white px-5 py-14 text-center text-gray-500 shadow-sm"
+        >
+          Không tìm thấy sản phẩm phù hợp.
+        </p>
+      </section>
+    </main>
+
+    <footer class="mt-12 bg-gray-900 py-8 text-center text-sm text-gray-400">
+      <p class="font-black tracking-wider text-white">SHOEPURPLE STORE</p>
+      <p class="mt-2">Hệ thống phân phối giày chính hãng | Hotline: 0123 456 789</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+      const categoryNames = {
+        moi: "Mới nhất",
+        hot: "Sản phẩm hot",
+        "khuyen-mai": "Khuyến mãi",
+      };
+      const grid = document.getElementById("productGrid");
+      const searchInput = document.getElementById("productSearch");
+      const sortSelect = document.getElementById("sortProducts");
+      let selectedCategory = "all";
+
+      function formatCurrency(amount) {
+        return amount.toLocaleString("vi-VN") + " đ";
+      }
+
+      function getCart() {
+        const storedCart = localStorage.getItem("cart");
+        return storedCart ? JSON.parse(storedCart) : [];
+      }
+
+      function updateCartCount() {
+        const count = getCart().reduce((total, item) => total + item.quantity, 0);
+        document.getElementById("cartCount").textContent = count;
+      }
+
+      function renderProducts() {
+        const query = searchInput.value.trim().toLocaleLowerCase("vi");
+        let visibleProducts = products.filter((product) => {
+          const matchesCategory =
+            selectedCategory === "all" || product.category === selectedCategory;
+          const matchesSearch = product.name.toLocaleLowerCase("vi").includes(query);
+          return matchesCategory && matchesSearch;
+        });
+
+        switch (sortSelect.value) {
+          case "price-asc":
+            visibleProducts.sort((a, b) => a.price - b.price);
+            break;
+          case "price-desc":
+            visibleProducts.sort((a, b) => b.price - a.price);
+            break;
+          case "name":
+            visibleProducts.sort((a, b) => a.name.localeCompare(b.name, "vi"));
+            break;
+        }
+
+        document.getElementById("resultCount").textContent = `${visibleProducts.length} sản phẩm`;
+        document
+          .getElementById("emptyMessage")
+          .classList.toggle("hidden", visibleProducts.length > 0);
+        grid.innerHTML = visibleProducts
+          .map(
+            (product) => `
+          <article class="product-card flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+            <div class="relative h-56 overflow-hidden bg-gray-100">
+              <span class="absolute left-3 top-3 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white shadow">${product.tag}</span>
+              <img src="${product.image}" alt="${product.name}" class="h-full w-full object-cover transition duration-500 hover:scale-105" loading="lazy">
+            </div>
+            <div class="flex flex-1 flex-col justify-between p-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-500">${categoryNames[product.category] || "Giày"}</span>
+                <h3 class="mt-1 font-bold text-gray-800">${product.name}</h3>
+              </div>
+              <div class="mt-5 flex items-center justify-between gap-3">
+                <div>
+                  <span class="font-extrabold text-indigo-600">${formatCurrency(product.price)}</span>
+                  ${product.oldPrice > product.price ? `<span class="block text-xs text-gray-400 line-through">${formatCurrency(product.oldPrice)}</span>` : ""}
+                </div>
+                <button type="button" data-add-product="${product.id}" class="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-indigo-100 transition hover:bg-indigo-700">
+                  <i class="fa-solid fa-cart-plus mr-1"></i> Thêm
+                </button>
+              </div>
+            </div>
+          </article>
+        `,
+          )
+          .join("");
+      }
+
+      document.getElementById("categoryFilters").addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-category]");
+        if (!button) return;
+        selectedCategory = button.dataset.category;
+        document.querySelectorAll(".category-filter").forEach((filter) => {
+          filter.classList.toggle("bg-indigo-600", filter === button);
+          filter.classList.toggle("text-white", filter === button);
+          filter.classList.toggle("shadow", filter === button);
+          filter.classList.toggle("bg-white", filter !== button);
+          filter.classList.toggle("text-gray-700", filter !== button);
+        });
+        renderProducts();
+      });
+
+      grid.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-add-product]");
+        if (!button) return;
+
+        const product = products.find((item) => item.id === Number(button.dataset.addProduct));
+        if (!product) return;
+
+        const cart = getCart();
+        const existingItem = cart.find((item) => item.id === product.id);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        button.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Đã thêm';
+        window.setTimeout(() => {
+          button.innerHTML = '<i class="fa-solid fa-cart-plus mr-1"></i> Thêm';
+        }, 1000);
+      });
+
+      searchInput.addEventListener("input", renderProducts);
+      sortSelect.addEventListener("change", renderProducts);
+      renderProducts();
+      updateCartCount();
+    </script>
+  </body>
+</html>

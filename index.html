@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Giày Style - Thế Giới Giày Chính Hãng</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwind;lk,jmbv  cbgiucss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Link CSS riêng theo yêu cầu Y2[cite: 4] -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- HEADER & NAVIGATION -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100"
+    >
+      <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a
+          href="#"
+          class="text-2xl font-black tracking-wider text-indigo-600 flex items-center gap-2"
+        >
+          <i class="fa-solid fa-shoe-prints"></i> SHOEPURPLE
+        </a>
+        <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+          <a href="#" class="text-indigo-600 font-semibold">Trang Chủ</a>
+          <a href="products.html" class="hover:text-indigo-600 transition">Sản Phẩm</a>
+          <a href="#flashsale" class="hover:text-indigo-600 transition">Flash Sale</a>
+          <a href="thanhtoan.html" class="hover:text-indigo-600 transition">Thanh Toán</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <div class="relative hidden sm:block">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Tìm kiếm giày..."
+              class="pl-9 pr-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-indigo-600 w-52 bg-gray-50"
+            />
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-sm"></i>
+          </div>
+          <button
+            onclick="toggleCart()"
+            class="relative p-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition"
+          >
+            <i class="fa-solid fa-cart-shopping text-base"></i>
+            <span
+              id="cartCount"
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold shadow"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section
+      class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-800 text-white py-20 px-4 overflow-hidden"
+    >
+      <div
+        class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-12"
+      >
+        <div class="md:w-1/2 space-y-6 text-center md:text-left">
+          <span
+            class="bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 text-xs uppercase px-4 py-1.5 rounded-full font-bold tracking-wider"
+            >Bộ Sưu Tập Mới 2026</span
+          >
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+            Bước Đi Tự Tin<br />Phong Cách Đỉnh Cao
+          </h1>
+          <p class="text-gray-300 text-base md:text-lg">
+            Khám phá hàng ngàn mẫu giày sneaker, thể thao và thời trang cao cấp với mức giá cực kỳ
+            ưu đãi.
+          </p>
+          <div class="flex items-center justify-center md:justify-start gap-4">
+            <a
+              href="products.html"
+              class="bg-white text-indigo-900 font-bold px-8 py-3.5 rounded-2xl shadow-xl hover:bg-gray-100 transition transform hover:-translate-y-0.5"
+              >Mua Ngay</a
+            >
+            <a
+              href="#flashsale"
+              class="border border-white/30 text-white font-semibold px-6 py-3.5 rounded-2xl hover:bg-white/10 transition"
+              >Xem Flash Sale</a
+            >
+          </div>
+        </div>
+        <div class="md:w-1/2 relative">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-3xl blur-xl opacity-30"
+          ></div>
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+            alt="Giày nổi bật"
+            class="relative rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500 w-full object-cover max-h-[400px]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ĐỒNG HỒ ĐẾM NGƯỢC FLASH SALE (Yêu cầu nâng cao Y1.6)[cite: 3] -->
+    <section id="flashsale" class="bg-red-50 py-6 border-y border-red-100">
+      <div
+        class="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shadow-md shadow-red-200"
+          >
+            <i class="fa-solid fa-bolt text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-black text-red-600 uppercase tracking-wide">
+              Flash Sale Giờ Vàng
+            </h2>
+            <p class="text-xs text-gray-500">Săn ngay những deal giảm giá cực sốc trong ngày</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-semibold text-gray-600">Kết thúc sau:</span>
+          <div
+            id="countdownTimer"
+            class="bg-red-600 text-white font-mono font-bold px-5 py-2.5 rounded-xl text-xl tracking-widest shadow-lg shadow-red-200"
+          >
+            10:45:00
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DANH MỤC & SẢN PHẨM (Yêu cầu Y1.2)[cite: 2] -->
+    <main id="products" class="container mx-auto px-4 py-16">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+        <div>
+          <h2 class="text-3xl font-black text-gray-900 tracking-tight">Khám Phá Sản Phẩm</h2>
+          <p class="text-gray-500 text-sm mt-1">Chọn danh mục để tìm đôi giày phù hợp với bạn</p>
+        </div>
+
+        <div class="flex gap-2 flex-wrap justify-center">
+          <a
+            href="#moi"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-gray-700 border border-gray-100 shadow-sm hover:text-indigo-600 transition"
+            >Mới nhất</a
+          >
+          <a
+            href="#hot"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-gray-700 border border-gray-100 shadow-sm hover:text-indigo-600 transition"
+            >Sản phẩm hot</a
+          >
+          <a
+            href="#khuyen-mai"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-gray-700 border border-gray-100 shadow-sm hover:text-indigo-600 transition"
+            >Khuyến mãi</a
+          >
+        </div>
+      </div>
+
+      <p id="noProductsMessage" class="hidden text-center text-gray-400 py-12 text-lg">
+        Không tìm thấy sản phẩm phù hợp.
+      </p>
+
+      <section id="moi" class="product-category mb-14">
+        <div class="mb-6">
+          <h3 class="text-2xl font-black text-gray-900">Mới nhất</h3>
+          <p class="text-gray-500 text-sm mt-1">Những mẫu giày mới vừa cập nhật</p>
+        </div>
+        <div
+          id="newProductGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        ></div>
+      </section>
+
+      <section id="hot" class="product-category mb-14">
+        <div class="mb-6">
+          <h3 class="text-2xl font-black text-gray-900">Sản phẩm hot</h3>
+          <p class="text-gray-500 text-sm mt-1">Các mẫu giày được yêu thích nhất</p>
+        </div>
+        <div
+          id="hotProductGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        ></div>
+      </section>
+
+      <section id="khuyen-mai" class="product-category">
+        <div class="mb-6">
+          <h3 class="text-2xl font-black text-gray-900">Khuyến mãi</h3>
+          <p class="text-gray-500 text-sm mt-1">Ưu đãi tốt cho những lựa chọn yêu thích</p>
+        </div>
+        <div
+          id="saleProductGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        ></div>
+      </section>
+    </main>
+
+    <!-- Liên kết sang trang thanh toán -->
+    <section id="contact" class="container mx-auto px-4 py-16 max-w-xl">
+      <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-black text-gray-900">Thông Tin Thanh Toán</h2>
+          <p class="text-gray-500 text-sm mt-1">
+            Xem lại giỏ hàng và nhập thông tin giao hàng để hoàn tất đơn hàng
+          </p>
+        </div>
+        <a
+          href="thanhtoan.html"
+          class="block text-center w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 text-base"
+        >
+          Tiếp tục thanh toán <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- GIỎ HÀNG DRAWER (SIDEBAR) -->
+    <div
+      id="cartOverlay"
+      class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity backdrop-blur-sm"
+      onclick="toggleCart()"
+    ></div>
+    <div
+      id="cartDrawer"
+      class="fixed top-0 right-0 w-full sm:w-[420px] h-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col"
+    >
+      <div class="p-5 border-b flex justify-between items-center bg-gray-50">
+        <h3 class="font-black text-lg flex items-center gap-2.5 text-gray-800">
+          <i class="fa-solid fa-cart-shopping text-indigo-600"></i> Giỏ Hàng Của Bạn
+        </h3>
+        <button
+          onclick="toggleCart()"
+          class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center font-bold transition"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4">
+        <!-- Sản phẩm trong giỏ -->
+        <p class="text-gray-400 text-center py-12">Giỏ hàng của bạn đang trống.</p>
+      </div>
+
+      <div class="p-6 border-t bg-gray-50 space-y-4">
+        <div class="flex justify-between items-center font-bold text-lg">
+          <span class="text-gray-600">Tổng tiền thanh toán:</span>
+          <span id="cartTotal" class="text-indigo-600 text-xl">0 đ</span>
+        </div>
+        <a
+          href="thanhtoan.html"
+          class="block text-center w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-100"
+          >Đi Đến Trang Thanh Toán</a
+        >
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-12 mt-16 border-t border-gray-800">
+      <div class="container mx-auto px-4 text-center">
+        <p class="font-black text-white text-xl tracking-wider mb-2">SHOEPURPLE STORE</p>
+        <p class="text-sm mb-4">
+          Hệ thống phân phối giày chính hãng hàng đầu | Hotline: 0123 456 789
+        </p>
+        <p class="text-xs text-gray-500">
+          &copy; 2026 Dự án Lập trình cơ sở với JavaScript - FPT Polytechnic.
+        </p>
+      </div>
+    </footer>
+
+    <!-- LIÊN KẾT CÁC FILE JAVASCRIPT (data.js phải nằm trước script.js)[cite: 4] -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
